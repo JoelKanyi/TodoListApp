@@ -11,7 +11,6 @@ model class becomes name of the table.
 The name of the class is the table name and the
 variables are the columns of the table.*/
 
-
 @Entity(tableName = "todo")
 class ToDo(
     @ColumnInfo(name = "todo_title")
