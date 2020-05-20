@@ -11,12 +11,15 @@ model class becomes name of the table.
 The name of the class is the table name and the
 variables are the columns of the table.*/
 
+
 @Entity(tableName = "todo")
-data class ToDo(
-    @PrimaryKey(autoGenerate = true) val tId:Int = 0,
-    @ColumnInfo(name = "todo_title") val title:String = "",
-    @ColumnInfo(name = "priority") val priority:Int = 0){
-    val detail: String = ""
+class ToDo(
+    @ColumnInfo(name = "todo_title")
+    var title:String = "",
+    @ColumnInfo(name = "todo_priority")
+    var priority: Int = 0,
+    @PrimaryKey(autoGenerate = true) var tId: Int = 0){
+    var detail: String = ""
 }
 
 
