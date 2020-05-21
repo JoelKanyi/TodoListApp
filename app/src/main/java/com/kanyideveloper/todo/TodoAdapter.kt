@@ -14,12 +14,18 @@ class TodoAdapter(var todoList: List<ToDo>? = ArrayList<ToDo>()): RecyclerView.A
     private var onTodoItemClickedListener: OnTodoItemClickedListener?= null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoViewHolder {
+
+        //setting the layout depending if there are todos to display
         val layout = if (itemCount == 0) R.layout.empty_view else R.layout.rv_todo_items
+
         val view = LayoutInflater.from(parent.context).inflate(layout, parent, false)
+
+        // !! converts any value to a non-null typeand throws an exception if the value is null
         return TodoViewHolder(view, todoList!!)
     }
 
     override fun getItemCount(): Int {
+        //if the list is empty or has items
         return if(todoList!!.isEmpty()) 0 else todoList!!.size
     }
 
@@ -36,7 +42,11 @@ class TodoAdapter(var todoList: List<ToDo>? = ArrayList<ToDo>()): RecyclerView.A
         fun onBindViews(position: Int){
             if (itemCount != 0){
                 view.findViewById<TextView>(R.id.title).text = todoList.get(position).title
+
+                //getting the first letter in the title
                 view.findViewById<TextView>(R.id.first_letter).text = todoList.get(position).title.first().toUpperCase().toString()
+
+                //
                 view.findViewById<ImageView>(R.id.priority_imgView).setImageResource(getImage(todoList.get(position).priority))
             }
 
