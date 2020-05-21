@@ -23,6 +23,8 @@ class ToDo(
     @ColumnInfo(name = "todo_priority")
     var priority: Int = 0,
     @PrimaryKey(autoGenerate = true) var tId: Int = 0){
+
+    //this will hold the details of a todo
     var detail: String = ""
 }
 
