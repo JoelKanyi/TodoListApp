@@ -13,7 +13,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), TodoAdapter.OnTodoItemClickedListener {
 
-
     private var todoDatabase: TodoDatabase? = null
     private var todoAdapter: TodoAdapter? = null
 
@@ -29,17 +28,23 @@ class MainActivity : AppCompatActivity(), TodoAdapter.OnTodoItemClickedListener 
 
     }
 
-
+    //after returning to the main activity
     override fun onResume() {
         super.onResume()
         todoAdapter?.todoList = todoDatabase?.getTodoDao()?.getTodoList()
         todo_rv.adapter = todoAdapter
+
+        //initialising the recyclerview
         todo_rv.layoutManager = LinearLayoutManager(this)
         todo_rv.hasFixedSize()
     }
 
+
+    //when one item on the recyclerview is clicked
     override fun onTodoItemClicked(todo: ToDo) {
         val intent = Intent(this, AddTodoActivity::class.java)
+
+        //initialising the add todo activity with data from the database
         intent.putExtra("tId", todo.tId)
         intent.putExtra("title", todo.title)
         intent.putExtra("priority", todo.priority)
@@ -48,7 +53,9 @@ class MainActivity : AppCompatActivity(), TodoAdapter.OnTodoItemClickedListener 
     }
 
     override fun onTodoItemLongClicked(todo: ToDo) {
-       /* val alertDialog = AlertDialog.Builder(this)
+        //there is an error with the setItems method,
+        //****************to be edited later
+        /*val alertDialog = AlertDialog.Builder(this)
             .setItems(R.array.dialog_list, DialogInterface.OnClickListener { dialog, which ->
                 if (which==0){
                     val intent = Intent(this, AddTodoActivity::class.java)
@@ -66,5 +73,4 @@ class MainActivity : AppCompatActivity(), TodoAdapter.OnTodoItemClickedListener 
             .create()
         alertDialog.show()*/
     }
-
 }
