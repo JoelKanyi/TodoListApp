@@ -13,7 +13,7 @@ We define the list of operation that we would like to perform on table.
 
 
 /**
- * Note: You will also observe that i called
+ * Note: I have called
  * allowMainThreadQueries method when creating the database,
  * this is not a good practice, operations such as querying a
  * database are not supposed to be done on the main thread, **/
@@ -25,12 +25,11 @@ abstract class TodoDatabase : RoomDatabase(){
     //an abstract method that return a DAO for the database
     abstract fun getTodoDao():TodoDao
 
-    /**
-     * A singleton design pattern is used to ensure that the database instance created is one
-     * */
-
+     //A singleton design pattern is used to ensure that the database instance created is one
     companion object{
-        val databaseName = "tododatabae"
+        val databaseName = "tododatabase"
+
+         //creating an instance of the Database class
         var todoDatabase: TodoDatabase? = null
 
         fun getInstance(context: Context): TodoDatabase?{
