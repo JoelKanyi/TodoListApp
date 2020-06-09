@@ -2,7 +2,7 @@
 A simple todo app with kotlin and room database
 
 ## Screenshots
-<img src="/readforme.jpeg" width="300" height= "600"/>
+<img src="/todo.jpeg" width="300" height= "600"/>
 
 
 ## Setup Requirements
